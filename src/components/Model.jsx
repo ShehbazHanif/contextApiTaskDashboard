@@ -20,11 +20,12 @@ const Model = ({
   const [formData, setFormData] = useState(inital_State);
   const [errors, setErrors] = useState({});
   useEffect(() => {
-    if (content) {
+    if (isOpen) {
       // console.log("content", content);
-      setFormData(content);
+      setFormData(content || inital_State);
+      setErrors({});
     }
-  }, [content]);
+  }, [isOpen, content]);
 
   const valiadateFeild = (name, value) => {
     let message = "";
@@ -71,6 +72,7 @@ const Model = ({
   if (!isOpen) {
     return null;
   }
+
   return (
     <div className="fixed inset-0  flex items-center justify-center bg-black/40 px-4">
       <div
